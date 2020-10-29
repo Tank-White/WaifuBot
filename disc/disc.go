@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"math/rand"
+	"os"
 	"strconv"
 	"sync"
 	"time"
@@ -13,6 +14,7 @@ import (
 	"github.com/diamondburned/arikawa/bot"
 	"github.com/diamondburned/arikawa/discord"
 	"github.com/diamondburned/arikawa/gateway"
+	"github.com/diamondburned/arikawa/utils/wsutil"
 )
 
 // Bot represent the bot
@@ -95,6 +97,9 @@ func Start(cf *config.ConfStruct) {
 				b.dropper.ChanInc[m.ChannelID] = 0
 			}
 		})
+		wsutil.WSDebug = func(v ...interface{}) {
+			log.New(os.Stdout, "[DEBUG] ", log.Flags()).Println(v)
+		}
 		return nil
 	})
 	if err != nil {
