@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"log"
 	"math/rand"
-	"os"
 	"strconv"
 	"sync"
 	"time"
@@ -98,7 +97,7 @@ func Start(cf *config.ConfStruct) {
 			}
 		})
 		wsutil.WSDebug = func(v ...interface{}) {
-			log.New(os.Stdout, "[DEBUG] ", log.Flags()).Println(v)
+			log.Println(v)
 		}
 		return nil
 	})
