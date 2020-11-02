@@ -84,7 +84,7 @@ func Start(cf *config.ConfStruct) {
 
 		ctx.AddHandler(func(m *gateway.MessageCreateEvent) {
 			// Filter bot message
-			if m.Author.ID == ctx.Ready.User.ID {
+			if m.Author.Bot {
 				return
 			}
 			// Higher chances the more you interact with the bot
